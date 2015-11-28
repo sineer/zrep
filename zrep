@@ -1,4 +1,5 @@
-#!/bin/ksh -p
+#!/usr/local/bin/ksh93 -p
+set -x
 
 # For more detailed documentation, see zrep.txt or zrep.overview.txt
 ZREP_VERSION=1.5.1
@@ -31,7 +32,7 @@ ZREPTAG=${ZREPTAG:-zrep}
 
 # If you have mbuffer installed, and wish to use it to speed up transfers,
 # define it in your environment. Sample definition:
-#MBUFFER="mbuffer -q -m 1G -s 128k"
+MBUFFER="mbuffer -q -m 512M -s 128k"
 
 # If you want to recursively create/send snapshots, set this to -R
 #  (or use the -R option to BOTH zrep init and zrep sync
@@ -791,7 +792,7 @@ zrep_init(){
 		READONLYPROP=""
 		print Ancient local version of ZFS detected.
 		print Creating destination filesystem as separate step
-		zrep_ssh $desthost zfs create $ZREP_CREATE_FLAGS -o readonly=on $destfs || zrep_errquit "Cannot create $desthost:$destfs"
+		zrep_ssh $desthost zfs create $ZREP_CREATE_FLAGS -p -o readonly=on $destfs || zrep_errquit "Cannot create $desthost:$destfs"
 	fi
 
 	snap="${srcfs}@${ZREPTAG}_000000"
