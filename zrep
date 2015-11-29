@@ -1,5 +1,5 @@
 #!/usr/local/bin/ksh93 -p
-set -x
+#set -x
 
 # For more detailed documentation, see zrep.txt or zrep.overview.txt
 ZREP_VERSION=1.5.1
@@ -790,8 +790,8 @@ zrep_init(){
 		READONLYPROP="-o readonly=on"
 	else
 		READONLYPROP=""
-		print Ancient local version of ZFS detected.
-		print Creating destination filesystem as separate step
+#		print Ancient local version of ZFS detected.
+#		print Creating destination filesystem as separate step
 		zrep_ssh $desthost zfs create $ZREP_CREATE_FLAGS -p -o readonly=on $destfs || zrep_errquit "Cannot create $desthost:$destfs"
 	fi
 
