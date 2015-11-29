@@ -660,8 +660,8 @@ makesnap(){
 zrep_clear(){
 	print "WARNING: Removing all zrep configs and snapshots from $1"
 	print " (for TAG=${ZREPTAG})"
-	print Continuing in 10 seconds
-	sleep 10
+	print Continuing in 1 seconds
+	sleep 1
 
 	print Destroying any zrep-related snapshots from $1
 	snaplist=`list_autosnaps $1`
